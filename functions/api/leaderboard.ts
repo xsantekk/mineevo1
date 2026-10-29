@@ -62,7 +62,9 @@ export const onRequestPost: PagesFunction<Env> = async ({
 
     const body = await request.json() as Partial<Player>;
 
-    const playerId = String(body.player_id ?? "").trim();
+    const playerId = String(
+  body.player_id ?? body.telegram_id ?? ""
+).trim();
     const username = String(body.username ?? "").trim();
     const level = Math.max(
       1,
